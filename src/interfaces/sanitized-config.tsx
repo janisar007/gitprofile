@@ -24,6 +24,8 @@ export interface SanitizedExternalProject {
   description?: string;
   imageUrl?: string;
   link: string;
+  tech?: Array<string>;
+  glink?: string;
 }
 
 export interface SanitizedExternalProjects {

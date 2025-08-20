@@ -3,6 +3,10 @@ import LazyImage from '../lazy-image';
 import { MdOpenInNew } from 'react-icons/md';
 import { ga, skeleton } from '../../utils';
 import { SanitizedExternalProject } from '../../interfaces/sanitized-config';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm'; // GitHub flavored markdown
+import rehypeHighlight from 'rehype-highlight'; // Syntax highlighting
+import { FaGithub } from 'react-icons/fa';
 
 const ExternalProjectCard = ({
   externalProjects,
@@ -69,27 +73,32 @@ const ExternalProjectCard = ({
 
   const renderExternalProjects = () => {
     return externalProjects.map((item, index) => (
-      <a
-        className="card shadow-md card-sm bg-base-100 cursor-pointer"
+      <div
+        className="card shadow-md card-sm bg-base-100 cursor-pointer "
         key={index}
-        href={item.link}
-        onClick={(e) => {
-          e.preventDefault();
-
-          try {
-            if (googleAnalyticId) {
-              ga.event('Click External Project', {
-                post: item.title,
-              });
-            }
-          } catch (error) {
-            console.error(error);
-          }
-
-          window?.open(item.link, '_blank');
-        }}
+        // href={item.link}
       >
-        <div className="p-8 h-full w-full">
+        <div className="mr-5 mt-5 flex justify-end hover:text-gray-700 cursor-pointer">
+          <FaGithub onClick={() => window?.open(item.glink, '_blank')} />
+        </div>
+        <div
+          className="p-8 h-full w-full "
+          onClick={(e) => {
+            e.preventDefault();
+
+            try {
+              if (googleAnalyticId) {
+                ga.event('Click External Project', {
+                  post: item.title,
+                });
+              }
+            } catch (error) {
+              console.error(error);
+            }
+
+            window?.open(item.link, '_blank');
+          }}
+        >
           <div className="flex items-center flex-col">
             <div className="w-full">
               <div className="px-4">
@@ -113,14 +122,27 @@ const ExternalProjectCard = ({
                     </div>
                   )}
                   <p className="mt-2 text-base-content text-sm text-justify">
-                    {item.description}
+                    <ReactMarkdown>{item.description}</ReactMarkdown>
                   </p>
+
+                  <div className="flex items-center gap-2 flex-wrap mt-[1rem]">
+                    {item?.tech?.map((t: any, idx: any) => {
+                      return (
+                        <span
+                          className="badge badge-secondary badge-sm flex items-center"
+                          key={idx}
+                        >
+                          {t}
+                        </span>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </a>
+      </div>
     ));
   };
 

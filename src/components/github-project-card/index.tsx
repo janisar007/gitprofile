@@ -3,6 +3,9 @@ import { AiOutlineFork, AiOutlineStar, AiOutlineGithub } from 'react-icons/ai';
 import { MdInsertLink } from 'react-icons/md';
 import { ga, getLanguageColor, skeleton } from '../../utils';
 import { GithubProject } from '../../interfaces/github-project';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm'; // GitHub flavored markdown
+import rehypeHighlight from 'rehype-highlight'; // Syntax highlighting
 
 const GithubProjectCard = ({
   header,
@@ -19,6 +22,10 @@ const GithubProjectCard = ({
 }) => {
   if (!loading && githubProjects.length === 0) {
     return;
+  }
+
+  function convertBoldText(input: any) {
+    return input?.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
   }
 
   const renderSkeleton = () => {
