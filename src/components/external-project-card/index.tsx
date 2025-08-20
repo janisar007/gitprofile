@@ -4,8 +4,6 @@ import { MdOpenInNew } from 'react-icons/md';
 import { ga, skeleton } from '../../utils';
 import { SanitizedExternalProject } from '../../interfaces/sanitized-config';
 import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm'; // GitHub flavored markdown
-import rehypeHighlight from 'rehype-highlight'; // Syntax highlighting
 import { FaGithub } from 'react-icons/fa';
 
 const ExternalProjectCard = ({
