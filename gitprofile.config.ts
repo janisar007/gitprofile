@@ -100,7 +100,7 @@ const CONFIG = {
             'It is a Threads Clone using Next.js, Node.js, Clerk, and TypeScript, featuring **robust authentication** and scalable **community management** that reduced account-related issues by 30%. Implemented **multi-level commenting**, increasing user engagement by 30% while supporting high concurrency. Additionally, I integrated advanced moderation pipelines to proactively **detect fraudulent activities** and ensure a safe community experience.',
           imageUrl:
             'https://firebasestorage.googleapis.com/v0/b/my-portfolio-c2d51.appspot.com/o/gitportfolio%2Ftpost.jpg?alt=media&token=a3a70116-c105-40f0-8680-32babb204e75',
-          link: 'https://github.com/janisar007/threads_app',
+          link: 'https://threads-app-flame-seven.vercel.app',
           glink: 'https://github.com/janisar007/threads_app',
           tech: [
             'Nextjs',
