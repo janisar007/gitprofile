@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/gitprofile/(.*)",
+      "destination": "/gitprofile/index.html"
+    }
+  ]
+}
